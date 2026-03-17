@@ -10,6 +10,9 @@ import { User } from '../../services/user';
   styleUrl: './find-donor.css',
 })
 export class FindDonor {
+  navigate(arg0: string[]) {
+    throw new Error('Method not implemented.');
+  }
 
   bloodgroups = [
     'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'

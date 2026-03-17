@@ -1,67 +1,60 @@
-<div class="back">
-    <div class="container-fluid py-5">
+<div class="dashboard-container">
 
-        <!-- Header -->
-        <div class="row mb-4 align-items-center">
-            <div class="col-md-6">
-                <h2 class="mb-0"> User Dashboard</h2>
-                <p class="text-muted">Your Profile Information</p>
-            </div>
-            <div class="col-md-6 text-md-end mt-2 mt-md-0">
-                <button class="btn btn-primary" (click)="gotofinddonor()">Find Donor</button>
-            </div>
-        </div>
-
-        <!-- Loader -->
-        @if (loading()) {
-        <div class="text-center my-5">
-            <div class="spinner-border text-danger"></div>
-            <p class="mt-2">Loading your data..</p>
-        </div>
-        }
-
-        <!-- No User -->
-        @if (!loading() && !user()) {
-        <div class="alert alert-warning text-center">
-            No user data found.
-        </div>
-        }
-
-        <!-- User Card -->
-        @if(!loading() && user()) {
-        <div class="row justify-content-center mt-4">
-            <!-- User info Card -->
-            <div class="col-xl-6 col-lg-7 col-md-9 col-sm-12">
-                <div class="card p-4 shadow-lg">
-                    <h3 class="mb-4">Welcome! {{ user().name }}</h3>
-                    <div class="row mb-3">
-                        <span class="label">Name:</span>
-                        <span class="value">{{ user().name }}</span>
-                    </div>
-                    <div class="row mb-3">
-                        <span class="label">Age:</span>
-                        <span class="value">{{ user().age }}</span>
-                    </div>
-                    <div class="row mb-3">
-                        <span class="label">Blood Group:</span>
-                        <span class="value">{{ user().bloodGroup }}</span>
-                    </div>
-                    <div class="row mb-3">
-                        <span class="label">City:</span>
-                        <span class="value">{{ user().city }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Requests Card -->
-
-            <div class="col-xl-6 col-lg-7 col-md-9 col-sm-12">
-                <div class="card p-4 shadow-lg">
-                    <h4 class="mb-4">Your Recent Requests</h4>
-                    <p>example (trying blood requests)</p>
-                </div>
-            </div>
-        </div>
-        }
+  <div class="header">
+    <div>
+      <h1>User Dashboard</h1>
+      <p>Your Profile Information</p>
     </div>
+
+    <button class="donor-btn">Find Donor</button>
+  </div>
+
+  <div class="dashboard-grid">
+
+    <!-- Profile Card -->
+    <div class="card profile-card">
+      <h2>Welcome! {{user.name}}</h2>
+
+      <p><strong>Name:</strong><br>{{user.name}}</p>
+      <p><strong>Age:</strong><br>{{user.age}}</p>
+      <p><strong>Blood Group:</strong><br>{{user.bloodGroup}}</p>
+      <p><strong>City:</strong><br>{{user.city}}</p>
+    </div>
+
+    <!-- Recent Request -->
+    <div class="card">
+      <h2>Your Recent Requests</h2>
+      <p>example (trying blood requests)</p>
+    </div>
+
+    <!-- Health Status -->
+    <div class="card health-card">
+
+      <h2>Donation Status</h2>
+
+      <div class="health-row">
+        <span>Last Donation Date:</span>
+        <strong>{{lastDonationDate}}</strong>
+      </div>
+
+      <div class="health-row">
+        <span>Eligible Again In:</span>
+        <strong>{{eligibleDays}} Days</strong>
+      </div>
+
+      <div class="health-row">
+        <span>Eligibility Countdown:</span>
+        <strong>{{countdown}}</strong>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress" [style.width.%]="progress"></div>
+      </div>
+
+      <p class="progress-text">{{countdown}}</p>
+
+    </div>
+
+  </div>
+
 </div>

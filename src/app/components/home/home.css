@@ -2,8 +2,8 @@
   min-height: 100vh;
   padding: 2rem 0;
   background:
-    linear-gradient(rgba(230, 57, 70, 0.65), rgba(177, 18, 38, 0.65)),
-    url("/assets/images/hero-bg.jpg");
+    /*linear-gradient(rgba(230, 57, 70, 0.65), rgba(177, 18, 38, 0.65)),*/
+    url(../../../../../../Downloadsjpeg/1bg.jpeg);
 
   background-size: cover;
   background-position: center;
@@ -20,6 +20,7 @@
 }
 
 .hero-buttons {
+  color: black;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -39,5 +40,6 @@
   .btn-lg {
     width: 100%;
     max-width: 280px;
+    
   }
 }

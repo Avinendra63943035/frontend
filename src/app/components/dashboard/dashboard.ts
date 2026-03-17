@@ -1,43 +1,29 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { User } from '../../services/user';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FindDonor } from '../find-donor/find-donor';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  styleUrls: ['./dashboard.css']
 })
-export class Dashboard implements OnInit {
-
-  private router = inject(Router);
-  private userService = inject(User);
-
-  user = signal<any>(null);
-  loading = signal<boolean>(true);
-
-  ngOnInit(): void {
-    this.loadUser();
-  }
-
-  loadUser() {
-    this.userService.getLatestUser().subscribe({
-      next: (res) => {
-        console.log('Dashboard user:', res);
-        this.user.set(res);
-        this.loading.set(false);
-      },
-      error: (err) => {
-        console.log('Error loading user:', err);
-        this.loading.set(false);
-      }
-    });
-  }
-
-  gotofinddonor() {
-    this.router.navigate(['/find-donor'])
-  };
+export class DashboardComponent {
+  router!: FindDonor;
+gotofinddonor() {
+this.router.navigate(['/find-donor'])
 }
 
+  user = {
+    name: 'kapil sharma',
+    age: 21,
+    bloodGroup: 'O+',
+    city: 'Bareilly'
+  };
+
+  lastDonationDate = 'April 15, 2024';
+  eligibleDays = 60;
+
+  countdown = '51 Days, 12 Hours, 48 Minutes';
+
+  progress = 80;
+
+}
